@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.frags.BMIFragment">
+
+    <!--Request BMI RelativeLayout-->
+    <RelativeLayout android:layout_width="match_parent"
+                    android:id="@+id/requestBMIRelativeLayout"
+                    android:visibility="visible"
+                    android:layout_height="match_parent">
+
+        <TextView android:layout_width="256dp"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="true"
+                  android:layout_marginTop="32dp"
+                  android:padding="8dp"
+                  android:gravity="center"
+                  android:textColor="@android:color/white"
+                  android:background="?colorPrimaryDark"
+                  android:id="@+id/bmiDisplay"
+                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:text="BMI Display"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/heightLayout"
+                android:layout_width="256dp"
+                android:layout_below="@+id/bmiDisplay"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="Height(meters)..."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/weightLayout"
+                android:layout_width="256dp"
+                android:layout_below="@+id/heightLayout"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="Weight(Kgs)..."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:text="Recommendations"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/primary_btn"
+                android:layout_below="@id/weightLayout"
+                android:textAllCaps="false"
+                android:id="@+id/recommendationsBtn"/>
+
+
+        <Button android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:text="Don't Know My Values"
+                android:layout_marginTop="32dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/default_btn"
+                android:textAllCaps="false"
+                android:layout_below="@+id/recommendationsBtn"
+                android:id="@+id/allRecommendations"/>
+    </RelativeLayout>
+
+    <!--Recommendations Relative Layout-->
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:background="#e6e6e6"
+                    android:id="@+id/recommendationsRelativeLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                tools:listitem="@layout/single_recommendation_view"
+                android:layout_centerInParent="true"
+                android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

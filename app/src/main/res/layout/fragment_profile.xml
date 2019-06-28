@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.frags.ProfileFragment">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/splash_bg">
+
+        <ProgressBar android:id="@+id/imageProgress"
+                     android:layout_width="wrap_content"
+                     android:visibility="gone"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"/>
+
+        <ImageView android:layout_width="124dp"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="@dimen/dimen_16dp"
+                   android:id="@+id/avatar"
+                   android:src="@drawable/ic_account_circle_black_96dp"
+                   android:layout_height="124dp"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/username"
+                  android:text="@string/username"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                  android:layout_below="@+id/avatar"
+                  android:layout_centerHorizontal="true" android:layout_marginTop="@dimen/dimen_16dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="com.maze.healthapp.ui.frags.HomeFragment"
+              android:label="Home" tools:layout="@layout/fragment_home">
+        <action android:id="@+id/actionCheckBMI" app:destination="@id/BMIFragment"/>
+        <action android:id="@+id/actionCheckBP"
+                app:destination="@id/bloodPressureFragment"/>
+        <action android:id="@+id/actionCheckBSL" app:destination="@id/BSLFragment"/>
+        <action android:id="@+id/actionViewAllUsers" app:destination="@id/allUsersFragment"/>
+    </fragment>
+    <fragment android:id="@+id/profileFragment" android:name="com.maze.healthapp.ui.frags.ProfileFragment"
+              android:label="Profile" tools:layout="@layout/fragment_profile"/>
+    <fragment android:id="@+id/BMIFragment" android:name="com.maze.healthapp.ui.frags.BMIFragment"
+              android:label="Body Mass Index" tools:layout="@layout/fragment_bmi">
+        <action android:id="@+id/actionBMIChecked" app:destination="@id/homeFragment"/>
+    </fragment>
+    <fragment android:id="@+id/bloodPressureFragment" android:name="com.maze.healthapp.ui.frags.BloodPressureFragment"
+              android:label="Blood Pressure" tools:layout="@layout/fragment_blood_pressure">
+        <action android:id="@+id/actionBPChecked" app:destination="@id/homeFragment"/>
+    </fragment>
+    <fragment android:id="@+id/BSLFragment" android:name="com.maze.healthapp.ui.frags.BSLFragment"
+              android:label="Blood Sugar Level" tools:layout="@layout/fragment_bsl">
+        <action android:id="@+id/actionBSLChecked" app:destination="@id/homeFragment"/>
+    </fragment>
+    <fragment android:id="@+id/reminderFragment" android:name="com.maze.healthapp.ui.frags.ReminderFragment"
+              android:label="Reminder" tools:layout="@layout/fragment_reminder"/>
+    <fragment android:id="@+id/mapsFragment" android:name="com.maze.healthapp.ui.frags.MapsFragment"
+              android:label="Maps" tools:layout="@layout/fragment_maps"/>
+    <fragment android:id="@+id/allUsersFragment" android:name="com.maze.healthapp.ui.frags.AllUsersFragment"
+              android:label="All Users" tools:layout="@layout/fragment_all_users">
+        <action android:id="@+id/actionAllUsers" app:destination="@id/homeFragment"/>
+    </fragment>
+</navigation>

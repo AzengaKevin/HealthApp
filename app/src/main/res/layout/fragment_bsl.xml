@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.frags.BSLFragment">
+
+    <LinearLayout
+            android:id="@+id/ll1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:visibility="visible"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="288dp"
+                android:layout_marginTop="48dp"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bslET"
+                    android:hint="Enter B.S Level.."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:text="Recommendations"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/primary_btn"
+                android:textAllCaps="false"
+                android:id="@+id/recommendationsBtn"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/dimen_16dp"
+                  android:padding="8dp"
+                  android:textColor="?colorPrimaryDark"
+                  android:gravity="center_horizontal"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:text="Check the Body Condition You Feel"/>
+
+        <CheckBox android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/headacheCB"
+                  android:layout_marginTop="8dp"
+                  android:text="Headache"/>
+
+        <CheckBox android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/noneCB"
+                  android:layout_marginTop="8dp"
+                  android:text="None"/>
+
+
+        <Button android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:text="Don't Know My Values"
+                android:layout_marginTop="32dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/default_btn"
+                android:textAllCaps="false"
+                android:id="@+id/allRecommendations"/>
+    </LinearLayout>
+
+    <!--Recommendations Relative Layout-->
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:background="#e6e6e6"
+                    android:id="@+id/recommendationsRelativeLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                tools:listitem="@layout/single_recommendation_view"
+                android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

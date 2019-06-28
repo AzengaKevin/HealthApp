@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+          android:id="@+id/homeFragment"
+          android:orderInCategory="100"
+          android:icon="@drawable/ic_home_black_24dp"/>
+
+    <item android:title="Profile"
+          android:id="@+id/profileFragment"
+          android:orderInCategory="101"
+          android:icon="@drawable/ic_account_circle_black_24dp"/>
+    <item android:title="Reminder"
+          android:orderInCategory="102"
+          android:id="@+id/reminderFragment"
+          android:icon="@drawable/ic_schedule_black_24dp"/>
+    <item android:title="Maps"
+          android:orderInCategory="103"
+          android:id="@+id/mapsFragment"
+          android:icon="@drawable/ic_location_on_black_24dp"/>
+</menu>
