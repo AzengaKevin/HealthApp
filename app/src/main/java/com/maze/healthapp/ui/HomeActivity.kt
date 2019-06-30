@@ -2,18 +2,19 @@ package com.maze.healthapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.maze.healthapp.R
-import com.maze.healthapp.ui.frags.HomeFragmentDirections
+import com.maze.healthapp.models.User
 import com.maze.healthapp.utils.logout
+import com.maze.healthapp.utils.toast
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -21,6 +22,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+
+    val TAG = "HomeActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +45,26 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
+
+        val query = db.document("users/${mAuth.uid}")
+
+        query.get()
+            .addOnSuccessListener {
+                if (it.exists()) {
+                    val user = it.toObject(User::class.java)
+
+                    user?.let {
+                        if (it.role.equals("Expert")) {
+                            menuInflater.inflate(R.menu.main, menu)
+                        }
+                    }
+                } else {
+                    menuInflater.inflate(R.menu.main, menu)
+                }
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "onCreateOptionsMenu", it)
+            }
 
         return true
     }
@@ -73,22 +95,26 @@ class HomeActivity : AppCompatActivity() {
         if (FirebaseAuth.getInstance().currentUser == null) {
             logout()
         } else {
-            db.document("users/${mAuth.currentUser?.uid}")
-                .get()
-                .addOnSuccessListener { snapshot ->
 
-                    if (snapshot.exists()) {
+            val docRef = db.collection("users").document("${FirebaseAuth.getInstance().currentUser?.uid}")
 
-                        updateUI()
+            docRef.get()
+                .addOnCompleteListener { task ->
 
+                    if (task.isSuccessful) {
+                        if (task.result!!.exists()) {
+                            toast("Profile Set")
+                        } else {
+                            toast("Should update profile")
+                        }
+                    } else {
+                        task.exception?.message?.let {
+                            toast(it)
+                        }
                     }
 
                 }
         }
     }
 
-    private fun updateUI() {
-
-
-    }
 }

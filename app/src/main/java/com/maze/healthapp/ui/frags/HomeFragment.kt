@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         }
 
         usersCard.setOnClickListener {
-            val action = HomeFragmentDirections.actionViewAllUsers()
+            val action = HomeFragmentDirections.actionCheckChats()
             Navigation.findNavController(it).navigate(action)
 
         }

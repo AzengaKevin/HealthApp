@@ -6,7 +6,8 @@
                 tools:context=".ui.frags.ProfileFragment">
 
     <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="160dp"
+                    android:id="@+id/rl1"
                     android:background="@drawable/splash_bg">
 
         <ProgressBar android:id="@+id/imageProgress"
@@ -15,19 +16,82 @@
                      android:layout_height="wrap_content"
                      android:layout_centerInParent="true"/>
 
-        <ImageView android:layout_width="124dp"
-                   android:layout_centerHorizontal="true"
-                   android:layout_marginTop="@dimen/dimen_16dp"
-                   android:id="@+id/avatar"
-                   android:src="@drawable/ic_account_circle_black_96dp"
-                   android:layout_height="124dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/userAvatar"
+                android:layout_width="96dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_account_circle_black_96dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <EditText android:layout_width="256dp"
+                  android:layout_height="wrap_content"
                   android:id="@+id/username"
-                  android:text="@string/username"
+                  android:hint="@string/username"
+                  android:textColorHint="@color/transWhite"
+                  android:backgroundTint="@android:color/white"
+                  android:textColor="@android:color/white"
+                  android:gravity="center_horizontal"
                   android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                  android:layout_below="@+id/avatar"
-                  android:layout_centerHorizontal="true" android:layout_marginTop="@dimen/dimen_16dp"/>
+                  android:layout_below="@+id/userAvatar"
+                  android:layout_centerHorizontal="true"
+                  android:layout_marginTop="8dp"/>
+
     </RelativeLayout>
+
+    <TextView
+            android:text="Email..."
+            android:layout_width="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:drawableStart="@drawable/ic_email_amber_24dp"
+            android:drawablePadding="@dimen/dimen_16dp"
+            android:layout_marginStart="32dp"
+            android:id="@+id/emailTV"
+            android:layout_below="@+id/rl1"/>
+
+    <TextView
+            android:text="Not Verified(Click To Verify)"
+            android:layout_width="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/holo_red_light"
+            android:id="@+id/emaiNotVerifiedTV"
+            android:layout_below="@+id/emailTV"/>
+    <TextView
+            android:text="+253700016349"
+            android:layout_below="@id/emaiNotVerifiedTV"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:drawableStart="@drawable/ic_phone_black_24dp"
+            android:layout_width="wrap_content"
+            android:drawablePadding="@dimen/dimen_16dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneTV"/>
+
+    <Button android:layout_width="256dp"
+            android:id="@+id/saveBtn"
+            android:layout_height="wrap_content"
+            android:text="Save Details"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_below="@id/phoneTV"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/primary_btn"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveProgress"/>
 
 </RelativeLayout>

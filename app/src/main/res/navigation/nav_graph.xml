@@ -10,7 +10,7 @@
         <action android:id="@+id/actionCheckBP"
                 app:destination="@id/bloodPressureFragment"/>
         <action android:id="@+id/actionCheckBSL" app:destination="@id/BSLFragment"/>
-        <action android:id="@+id/actionViewAllUsers" app:destination="@id/allUsersFragment"/>
+        <action android:id="@+id/actionCheckChats" app:destination="@id/chatsFragment"/>
     </fragment>
     <fragment android:id="@+id/profileFragment" android:name="com.maze.healthapp.ui.frags.ProfileFragment"
               android:label="Profile" tools:layout="@layout/fragment_profile"/>
@@ -32,6 +32,11 @@
               android:label="Maps" tools:layout="@layout/fragment_maps"/>
     <fragment android:id="@+id/allUsersFragment" android:name="com.maze.healthapp.ui.frags.AllUsersFragment"
               android:label="All Users" tools:layout="@layout/fragment_all_users">
-        <action android:id="@+id/actionAllUsers" app:destination="@id/homeFragment"/>
+        <action android:id="@+id/actionChatWithUser" app:destination="@id/chatsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/chatsFragment" android:name="com.maze.healthapp.ui.frags.ChatsFragment"
+              android:label="Chats" tools:layout="@layout/fragment_chats">
+        <action android:id="@+id/actionChatsChecked" app:destination="@id/homeFragment"/>
+        <action android:id="@+id/actionGetUser" app:destination="@id/allUsersFragment"/>
     </fragment>
 </navigation>
