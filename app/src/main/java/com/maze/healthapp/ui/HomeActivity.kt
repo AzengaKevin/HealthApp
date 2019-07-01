@@ -1,10 +1,12 @@
 package com.maze.healthapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,7 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.maze.healthapp.R
 import com.maze.healthapp.models.User
 import com.maze.healthapp.utils.logout
-import com.maze.healthapp.utils.toast
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -38,6 +39,10 @@ class HomeActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
+        addRecTV.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, AddRecommendationsActivity::class.java))
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -46,25 +51,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-        val query = db.document("users/${mAuth.uid}")
-
-        query.get()
-            .addOnSuccessListener {
-                if (it.exists()) {
-                    val user = it.toObject(User::class.java)
-
-                    user?.let {
-                        if (it.role.equals("Expert")) {
-                            menuInflater.inflate(R.menu.main, menu)
-                        }
-                    }
-                } else {
-                    menuInflater.inflate(R.menu.main, menu)
-                }
-            }
-            .addOnFailureListener {
-                Log.e(TAG, "onCreateOptionsMenu", it)
-            }
+        menuInflater.inflate(R.menu.main, menu)
 
         return true
     }
@@ -99,20 +86,21 @@ class HomeActivity : AppCompatActivity() {
             val docRef = db.collection("users").document("${FirebaseAuth.getInstance().currentUser?.uid}")
 
             docRef.get()
-                .addOnCompleteListener { task ->
+                .addOnSuccessListener {
+                    if (it.exists()) {
+                        val user = it.toObject(User::class.java)
 
-                    if (task.isSuccessful) {
-                        if (task.result!!.exists()) {
-                            toast("Profile Set")
-                        } else {
-                            toast("Should update profile")
-                        }
-                    } else {
-                        task.exception?.message?.let {
-                            toast(it)
+                        user?.let {
+                            if (it.role.equals("Expert")) {
+                                addRecTV.visibility = View.VISIBLE
+                            } else {
+                                addRecTV.visibility = View.GONE
+                            }
                         }
                     }
-
+                }
+                .addOnFailureListener {
+                    Log.e(TAG, "onStart", it)
                 }
         }
     }

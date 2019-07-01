@@ -13,4 +13,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="avatar">Avatar</string>
     <string name="username">Username</string>
+
+    <string-array name="categories">
+        <item>Body Mass Index</item>
+        <item>Blood Sugar Level</item>
+        <item>Blood Pressure</item>
+    </string-array>
 </resources>

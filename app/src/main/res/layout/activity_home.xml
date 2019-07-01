@@ -15,7 +15,7 @@
         <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+                android:theme="@style/AppTheme.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -24,6 +24,15 @@
                     android:background="?colorPrimary"
                     android:layout_height="?attr/actionBarSize"/>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView android:layout_width="match_parent"
+                  android:text="Add Recommendation"
+                  android:id="@+id/addRecTV"
+                  android:visibility="gone"
+                  android:padding="8dp"
+                  android:gravity="center_horizontal"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                  android:layout_height="wrap_content"/>
 
         <fragment
                 android:name="androidx.navigation.fragment.NavHostFragment"

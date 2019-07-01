@@ -28,7 +28,7 @@ class UsersAdapter(val users: List<User>) : RecyclerView.Adapter<UsersAdapter.Us
 
         val user = users[position]
 
-        user.photoUrl?.let {
+        user.photoUrl.let {
             Glide.with(ctx)
                 .load(user.photoUrl)
                 .into(holder.avatarCIV)
