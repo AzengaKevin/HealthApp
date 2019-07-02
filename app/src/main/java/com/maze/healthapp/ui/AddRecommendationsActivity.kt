@@ -14,18 +14,28 @@ import com.maze.healthapp.utils.toast
 import kotlinx.android.synthetic.main.activity_add_recommendations.*
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
 
 
 class AddRecommendationsActivity : AppCompatActivity() {
+
+    private val TAG = "AddRecommendationsAct"
 
     private val STORAGE_RC = 999
     private val IMAGE_RC = 100
     private var section = "bmi"
     private var imagePath: Uri? = null
 
+    private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_recommendations)
+
+        db = FirebaseFirestore.getInstance()
 
         setupSinner()
 
@@ -90,7 +100,7 @@ class AddRecommendationsActivity : AppCompatActivity() {
             recContent.requestFocus()
         }
 
-        if(imagePath == null){
+        if (imagePath == null) {
             toast("Please Select An Image")
             return
         }
@@ -99,9 +109,97 @@ class AddRecommendationsActivity : AppCompatActivity() {
     }
 
     private fun uploadDetails() {
-
         toast("We are good to go")
 
+        val fileRef = FirebaseStorage.getInstance().getReference("recommendations/${UUID.randomUUID()}")
+
+        val uploadTask = fileRef.putFile(imagePath!!)
+
+        uploadTask
+            .addOnSuccessListener {
+                fileRef.downloadUrl.addOnSuccessListener { uri ->
+
+                    toFirestore(uri.toString())
+
+                }
+
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "uploadDetails", e)
+            }
+
+
+    }
+
+    private fun toFirestore(imageUrl: String) {
+
+        val content = recContent.text.toString().trim()
+
+        when (section) {
+            "bmi" -> {
+                val bmi = bmiET.text.toString().trim()
+                val data = hashMapOf(
+                    "photoUrl" to imageUrl,
+                    "bmi" to bmi,
+                    "content" to content
+                )
+
+                db.collection(section)
+                    .add(data)
+                    .addOnSuccessListener {
+                        toast("Recommendation Added")
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e(TAG, "toFirestore", e)
+                    }
+
+            }
+            "bsl" -> {
+                val bsl = bslET.text.toString().trim()
+
+                val data = hashMapOf(
+                    "photoUrl" to imageUrl,
+                    "bsl" to bsl,
+                    "content" to content
+                )
+
+                db.collection(section)
+                    .add(data)
+                    .addOnSuccessListener {
+                        toast("Recommendation Added")
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e(TAG, "toFirestore", e)
+                    }
+
+            }
+
+
+            "bp" -> {
+                val systole = systoleET.text.toString().trim()
+                val diastole = diastoleET.text.toString().trim()
+
+                val data = hashMapOf(
+                    "photoUrl" to imageUrl,
+                    "systole" to systole,
+                    "diastole" to diastole,
+                    "content" to content
+                )
+
+                db.collection(section)
+                    .add(data)
+                    .addOnSuccessListener {
+                        toast("Recommendation Added")
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e(TAG, "toFirestore", e)
+                    }
+
+            }
+        }
 
     }
 

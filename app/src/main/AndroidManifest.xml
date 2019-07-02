@@ -18,7 +18,8 @@
                   android:parentActivityName=".ui.HomeActivity">
         </activity>
         <activity android:name=".ui.MessagesActivity"
-                  android:parentActivityName=".ui.HomeActivity">
+                  android:parentActivityName=".ui.HomeActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".ui.HomeActivity"

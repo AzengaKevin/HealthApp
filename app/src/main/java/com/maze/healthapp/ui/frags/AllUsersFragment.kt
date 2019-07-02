@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 import com.maze.healthapp.R
@@ -60,7 +61,8 @@ class AllUsersFragment : Fragment() {
 
                             val user = snapshot.toObject(User::class.java)
 
-                            users.add(user)
+                            if (!FirebaseAuth.getInstance().uid?.equals(user.uid)!!)
+                                users.add(user)
 
                             Log.d(TAG, "I've got some users for you")
                         }

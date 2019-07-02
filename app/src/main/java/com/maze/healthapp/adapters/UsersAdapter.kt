@@ -1,6 +1,7 @@
 package com.maze.healthapp.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.maze.healthapp.R
 import com.maze.healthapp.models.User
+import com.maze.healthapp.ui.MessagesActivity
 import kotlinx.android.synthetic.main.single_user_view.view.*
 
 class UsersAdapter(val users: List<User>) : RecyclerView.Adapter<UsersAdapter.UserHolder>() {
@@ -35,6 +37,12 @@ class UsersAdapter(val users: List<User>) : RecyclerView.Adapter<UsersAdapter.Us
         }
 
         holder.usernameTV.setText(user.name)
+
+        holder.mView.setOnClickListener {
+            val intent = Intent(ctx, MessagesActivity::class.java)
+            intent.putExtra("uid", user.uid)
+            ctx.startActivity(intent)
+        }
 
 
     }
