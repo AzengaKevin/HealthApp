@@ -31,7 +31,7 @@
                   android:visibility="gone"
                   android:padding="8dp"
                   android:gravity="center_horizontal"
-                  android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                   android:layout_height="wrap_content"/>
 
         <fragment

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
                 android:background="@drawable/splash_bg"
                 android:layout_height="160dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="96dp"
             android:contentDescription="@string/avatar"
             android:layout_marginTop="8dp"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:layout_height="96dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@android:color/black"
+            app:civ_border_width="2dp"
             android:src="@drawable/ic_account_circle_black_96dp"/>
 
     <TextView android:id="@+id/username"

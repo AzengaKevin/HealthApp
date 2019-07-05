@@ -8,15 +8,20 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.maze.healthapp.R
 import com.maze.healthapp.models.User
 import com.maze.healthapp.utils.logout
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.fragment_bmi.view.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -41,6 +46,19 @@ class HomeActivity : AppCompatActivity() {
 
         addRecTV.setOnClickListener {
             startActivity(Intent(this@HomeActivity, AddRecommendationsActivity::class.java))
+        }
+
+        mAuth.currentUser?.photoUrl?.let {
+
+            Glide.with(this)
+                .load(it)
+                .into(navView.getHeaderView(0).avatar)
+
+        }
+        mAuth.currentUser?.displayName?.let {
+
+            navView.getHeaderView(0).username.text = it
+
         }
 
     }

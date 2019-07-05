@@ -20,7 +20,7 @@
                   android:textColor="@android:color/white"
                   android:background="?colorPrimaryDark"
                   android:id="@+id/bmiDisplay"
-                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
                   android:text="BMI Display"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -34,6 +34,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/heightET"
                     android:inputType="numberDecimal"
                     android:hint="Height(meters)..."/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -50,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
+                    android:id="@+id/weightET"
                     android:hint="Weight(Kgs)..."/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,6 +86,7 @@
                     android:id="@+id/recommendationsRelativeLayout">
 
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bmiRV"
                 android:layout_width="match_parent"
                 tools:listitem="@layout/single_recommendation_view"
                 android:layout_centerInParent="true"
