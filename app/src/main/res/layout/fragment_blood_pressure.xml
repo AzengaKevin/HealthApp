@@ -5,11 +5,12 @@
                 android:layout_height="match_parent"
                 tools:context=".ui.frags.BloodPressureFragment">
 
+    <!--Get Blood Pressure-->
     <LinearLayout
             android:id="@+id/ll1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_centerInParent="true"
+            android:visibility="visible"
             android:gravity="center_horizontal"
             android:layout_height="match_parent">
 
@@ -42,47 +43,18 @@
                 android:layout_height="wrap_content"
                 android:text="Recommendations"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                android:layout_centerHorizontal="true"
                 android:background="@drawable/primary_btn"
                 android:textAllCaps="false"
                 android:id="@+id/recommendationsBtn"/>
-
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/dimen_16dp"
-                  android:padding="8dp"
-                  android:textColor="?colorPrimaryDark"
-                  android:gravity="center_horizontal"
-                  android:textAppearance="?android:attr/textAppearanceMedium"
-                  android:text="Check the Body Condition You Feel"/>
-
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/headacheCB"
-                  android:layout_marginTop="8dp"
-                  android:text="Headache"/>
-
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/fatigueCB"
-                  android:layout_marginTop="8dp"
-                  android:text="Fatigue"/>
-
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/noneCB"
-                  android:layout_marginTop="8dp"
-                  android:text="None"/>
 
 
         <Button android:layout_width="256dp"
                 android:layout_height="wrap_content"
                 android:text="Don't Know My Values"
                 android:layout_marginTop="32dp"
-                android:layout_centerHorizontal="true"
                 android:background="@drawable/default_btn"
                 android:textAllCaps="false"
-                android:id="@+id/allRecommendations"/>
+                android:id="@+id/checkActionsBtn"/>
     </LinearLayout>
 
 
@@ -92,6 +64,106 @@
                     android:visibility="gone"
                     android:background="#e6e6e6"
                     android:id="@+id/recommendationsRelativeLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                tools:listitem="@layout/single_recommendation_view"
+                android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <!--Check Conditions-->
+    <RelativeLayout android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:id="@+id/checkConditions"
+                    android:layout_height="match_parent">
+
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/dimen_16dp"
+                  android:padding="8dp"
+                  android:id="@+id/textView"
+                  android:textColor="?colorPrimaryDark"
+                  android:gravity="center_horizontal"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:text="Check the Body Condition You Feel"/>
+
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_below="@+id/textView"
+                      android:orientation="vertical"
+                      android:layout_marginStart="48dp"
+                      android:layout_height="match_parent">
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/headache"
+                      android:layout_marginTop="8dp"
+                      android:text="Severe Headache"/>
+
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/heartbeat"
+                      android:layout_marginTop="8dp"
+                      android:text="Irregular Heart Beat"/>
+
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/breathing"
+                      android:layout_marginTop="8dp"
+                      android:text="Difficulties in Breathing"/>
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/fatigue"
+                      android:layout_marginTop="8dp"
+                      android:text="Fatigue and Confusion"/>
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/blood"
+                      android:layout_marginTop="8dp"
+                      android:text="Blood in the Urine"/>
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/pounding"
+                      android:layout_marginTop="8dp"
+                      android:text="Pounding"/>
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/chestpain"
+                      android:layout_marginTop="8dp"
+                      android:text="Chest Pain"/>
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/vision"
+                      android:layout_marginTop="8dp"
+                      android:text="Vision Problems"/>
+
+            <Button android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit"
+                    android:text="Submit"
+                    android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--All Recommendations-->
+    <RelativeLayout
+            android:id="@+id/allRecommendationsRL"
+            android:layout_width="match_parent"
+            android:background="#e6e6e6"
+            android:visibility="gone"
+            android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

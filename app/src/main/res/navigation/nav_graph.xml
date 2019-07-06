@@ -17,14 +17,18 @@
     <fragment android:id="@+id/BMIFragment" android:name="com.maze.healthapp.ui.frags.BMIFragment"
               android:label="Body Mass Index" tools:layout="@layout/fragment_bmi">
         <action android:id="@+id/actionBMIChecked" app:destination="@id/homeFragment"/>
+        <action android:id="@+id/actionGetGeneral" app:destination="@id/getGeneralFragments"/>
     </fragment>
     <fragment android:id="@+id/bloodPressureFragment" android:name="com.maze.healthapp.ui.frags.BloodPressureFragment"
               android:label="Blood Pressure" tools:layout="@layout/fragment_blood_pressure">
         <action android:id="@+id/actionBPChecked" app:destination="@id/homeFragment"/>
+        <action android:id="@+id/actionGetGeneral"
+                app:destination="@id/getGeneralFragments"/>
     </fragment>
     <fragment android:id="@+id/BSLFragment" android:name="com.maze.healthapp.ui.frags.BSLFragment"
               android:label="Blood Sugar Level" tools:layout="@layout/fragment_bsl">
         <action android:id="@+id/actionBSLChecked" app:destination="@id/homeFragment"/>
+        <action android:id="@+id/actionGetGeneral" app:destination="@id/getGeneralFragments"/>
     </fragment>
     <fragment android:id="@+id/reminderFragment" android:name="com.maze.healthapp.ui.frags.ReminderFragment"
               android:label="Reminder" tools:layout="@layout/fragment_reminder"/>
@@ -39,4 +43,6 @@
         <action android:id="@+id/actionChatsChecked" app:destination="@id/homeFragment"/>
         <action android:id="@+id/actionGetUser" app:destination="@id/allUsersFragment"/>
     </fragment>
+    <fragment android:id="@+id/getGeneralFragments" android:name="com.maze.healthapp.ui.frags.GetGeneralFragments"
+              android:label="General Recommendations" tools:layout="@layout/fragment_get_general_fragments"/>
 </navigation>

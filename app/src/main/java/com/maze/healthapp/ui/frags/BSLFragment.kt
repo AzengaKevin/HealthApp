@@ -28,10 +28,30 @@ class BSLFragment : Fragment() {
 
         ll1.visibility = View.VISIBLE
         recommendationsRelativeLayout.visibility = View.GONE
+        allBSLRecommendations.visibility = View.GONE
+        checkBSLConditionsLayout.visibility = View.GONE
 
-        recommendationsBtn.setOnClickListener {
+        bslRecBtn.setOnClickListener {
             ll1.visibility = View.GONE
             recommendationsRelativeLayout.visibility = View.VISIBLE
+            allBSLRecommendations.visibility = View.GONE
+            checkBSLConditionsLayout.visibility = View.GONE
+        }
+
+        checkBSLSymptomsBtn.setOnClickListener {
+            ll1.visibility = View.GONE
+            recommendationsRelativeLayout.visibility = View.GONE
+            allBSLRecommendations.visibility = View.GONE
+            checkBSLConditionsLayout.visibility = View.VISIBLE
+
+        }
+
+        getSuggestionsBtn.setOnClickListener {
+            ll1.visibility = View.GONE
+            recommendationsRelativeLayout.visibility = View.GONE
+            allBSLRecommendations.visibility = View.VISIBLE
+            checkBSLConditionsLayout.visibility = View.GONE
+
         }
     }
 

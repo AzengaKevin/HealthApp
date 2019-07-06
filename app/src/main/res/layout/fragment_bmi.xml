@@ -69,7 +69,7 @@
 
         <Button android:layout_width="256dp"
                 android:layout_height="wrap_content"
-                android:text="Don't Know My Values"
+                android:text="General Recommendations"
                 android:layout_marginTop="32dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/default_btn"

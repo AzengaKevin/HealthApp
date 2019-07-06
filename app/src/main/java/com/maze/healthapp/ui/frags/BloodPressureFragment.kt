@@ -10,10 +10,6 @@ import android.view.ViewGroup
 import com.maze.healthapp.R
 import kotlinx.android.synthetic.main.fragment_blood_pressure.*
 
-/**
- * A simple [Fragment] subclass.
- *
- */
 class BloodPressureFragment : Fragment() {
 
     override fun onCreateView(
@@ -28,14 +24,31 @@ class BloodPressureFragment : Fragment() {
 
         ll1.visibility = View.VISIBLE
         recommendationsRelativeLayout.visibility = View.GONE
+        allRecommendationsRL.visibility = View.GONE
+        checkConditions.visibility = View.GONE
 
         recommendationsBtn.setOnClickListener {
             ll1.visibility = View.GONE
             recommendationsRelativeLayout.visibility = View.VISIBLE
+            allRecommendationsRL.visibility = View.GONE
+            checkConditions.visibility = View.GONE
         }
 
+        checkActionsBtn.setOnClickListener {
+
+            ll1.visibility = View.GONE
+            recommendationsRelativeLayout.visibility = View.GONE
+            allRecommendationsRL.visibility = View.GONE
+            checkConditions.visibility = View.VISIBLE
+        }
+
+        submit.setOnClickListener {
+            ll1.visibility = View.GONE
+            recommendationsRelativeLayout.visibility = View.GONE
+            allRecommendationsRL.visibility = View.VISIBLE
+            checkConditions.visibility = View.GONE
+        }
 
     }
-
 
 }

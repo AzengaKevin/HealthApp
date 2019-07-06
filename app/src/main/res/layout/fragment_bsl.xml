@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent" android:layout_height="match_parent"
                 tools:context=".ui.frags.BSLFragment">
 
+    <!--Get Blood Sugar Level Layout-->
     <LinearLayout
             android:id="@+id/ll1"
             android:orientation="vertical"
@@ -33,29 +34,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/primary_btn"
                 android:textAllCaps="false"
-                android:id="@+id/recommendationsBtn"/>
-
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/dimen_16dp"
-                  android:padding="8dp"
-                  android:textColor="?colorPrimaryDark"
-                  android:gravity="center_horizontal"
-                  android:textAppearance="?android:attr/textAppearanceMedium"
-                  android:text="Check the Body Condition You Feel"/>
-
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/headacheCB"
-                  android:layout_marginTop="8dp"
-                  android:text="Headache"/>
-
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/noneCB"
-                  android:layout_marginTop="8dp"
-                  android:text="None"/>
-
+                android:id="@+id/bslRecBtn"/>
 
         <Button android:layout_width="256dp"
                 android:layout_height="wrap_content"
@@ -64,7 +43,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/default_btn"
                 android:textAllCaps="false"
-                android:id="@+id/allRecommendations"/>
+                android:id="@+id/checkBSLSymptomsBtn"/>
     </LinearLayout>
 
     <!--Recommendations Relative Layout-->
@@ -82,5 +61,63 @@
         </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
+
+    <!--Check conditions Layout-->
+    <LinearLayout android:layout_width="match_parent"
+                  android:visibility="gone"
+                  android:layout_height="match_parent"
+                  android:id="@+id/checkBSLConditionsLayout"
+                  android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/dimen_16dp"
+                  android:padding="8dp"
+                  android:textColor="?colorPrimaryDark"
+                  android:gravity="center_horizontal"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:text="Check the Body Condition You Feel"/>
+
+
+        <CheckBox android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/headacheCB"
+                  android:layout_marginTop="8dp"
+                  android:text="Severe Headache"/>
+
+        <CheckBox android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/noneCB"
+                  android:layout_marginTop="8dp"
+                  android:text="Fatigue"/>
+
+
+        <Button android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:text="Support"
+                android:layout_marginTop="32dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/default_btn"
+                android:textAllCaps="false"
+                android:id="@+id/getSuggestionsBtn"/>
+
+    </LinearLayout>
+
+    <!--All BSL Recommendations Layout-->
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:id="@+id/allBSLRecommendations">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/allBSLRecRV"
+                android:layout_width="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/single_recommendation_view"
+                android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
