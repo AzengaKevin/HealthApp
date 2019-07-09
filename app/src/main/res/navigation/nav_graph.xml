@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/homeFragment">
+            app:startDestination="@id/homeFragment" android:label="Maps">
 
     <fragment android:id="@+id/homeFragment" android:name="com.maze.healthapp.ui.frags.HomeFragment"
               android:label="Home" tools:layout="@layout/fragment_home">
@@ -32,8 +32,6 @@
     </fragment>
     <fragment android:id="@+id/reminderFragment" android:name="com.maze.healthapp.ui.frags.ReminderFragment"
               android:label="Reminder" tools:layout="@layout/fragment_reminder"/>
-    <fragment android:id="@+id/mapsFragment" android:name="com.maze.healthapp.ui.frags.MapsFragment"
-              android:label="Maps" tools:layout="@layout/fragment_maps"/>
     <fragment android:id="@+id/allUsersFragment" android:name="com.maze.healthapp.ui.frags.AllUsersFragment"
               android:label="All Users" tools:layout="@layout/fragment_all_users">
         <action android:id="@+id/actionChatWithUser" app:destination="@id/chatsFragment"/>
@@ -45,4 +43,6 @@
     </fragment>
     <fragment android:id="@+id/getGeneralFragments" android:name="com.maze.healthapp.ui.frags.GetGeneralFragments"
               android:label="General Recommendations" tools:layout="@layout/fragment_get_general_fragments"/>
+    <activity android:id="@+id/mapsActivity" android:name="com.maze.healthapp.ui.MapsActivity"
+              android:label="activity_maps" tools:layout="@layout/activity_maps"/>
 </navigation>

@@ -13,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +32,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
 
     val TAG = "HomeActivity"
+    val ERR_DIALOG_RC = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +63,8 @@ class HomeActivity : AppCompatActivity() {
             navView.getHeaderView(0).username.text = it
 
         }
+
+        isServiceOK()
 
     }
 
@@ -92,6 +97,27 @@ class HomeActivity : AppCompatActivity() {
 
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun isServiceOK(): Boolean {
+
+        Log.d(TAG, "isServiceOK: checking google service version")
+
+        val availabe = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this@HomeActivity)
+
+        if (availabe == ConnectionResult.SUCCESS) {
+            Log.d(TAG, "isServiceOK: checking google service version")
+            return true
+        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(availabe)) {
+            Log.d(TAG, "isServiceOK: an error occurred but you ca fix it")
+
+            GoogleApiAvailability.getInstance().getErrorDialog(this@HomeActivity, availabe, ERR_DIALOG_RC).show()
+            return true
+        } else {
+            Log.d(TAG, "isServiceOK: You can't make maps request")
+
+            return false
+        }
     }
 
     override fun onStart() {

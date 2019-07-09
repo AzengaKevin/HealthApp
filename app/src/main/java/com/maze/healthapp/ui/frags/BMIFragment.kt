@@ -39,11 +39,8 @@ class BMIFragment : Fragment() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
             if (s.isNullOrEmpty()) return
-            s?.let {
-                height = it.toString().trim().toDouble()
-
-                calculateBMI()
-            }
+            height = s.toString().trim().toDouble()
+            calculateBMI()
 
         }
 
@@ -61,11 +58,8 @@ class BMIFragment : Fragment() {
         override fun onTextChanged(s: CharSequence?, start: Int, end: Int, count: Int) {
             if (s.isNullOrEmpty()) return
 
-            s?.let {
-                weight = it.toString().trim().toDouble()
-
-                calculateBMI()
-            }
+            weight = s.toString().trim().toDouble()
+            calculateBMI()
         }
     }
 

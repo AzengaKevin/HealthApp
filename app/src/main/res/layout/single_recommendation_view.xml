@@ -13,6 +13,7 @@
         <ImageView android:layout_width="72dp"
                    android:id="@+id/recImage"
                    android:layout_height="72dp"
+                   android:scaleType="centerCrop"
                    android:background="@android:color/black"/>
 
         <TextView android:layout_width="match_parent"

@@ -20,4 +20,7 @@
         <item>Blood Sugar Level</item>
         <item>Blood Pressure</item>
     </string-array>
+
+    <string name="API_KEY">AIzaSyCQDBbaodziyCQ7DKOL_Xd8-kbh5_3MY94</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

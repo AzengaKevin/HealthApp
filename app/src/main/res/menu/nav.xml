@@ -17,6 +17,6 @@
           android:icon="@drawable/ic_schedule_black_24dp"/>
     <item android:title="Maps"
           android:orderInCategory="103"
-          android:id="@+id/mapsFragment"
+          android:id="@+id/mapsActivity"
           android:icon="@drawable/ic_location_on_black_24dp"/>
 </menu>
